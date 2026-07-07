@@ -99,16 +99,45 @@
 </head>
 <body>
 
-<div class="log-box">   
+<div class="log-box">
 >ERROR FOUND IN USER ███████████ DURING UPDATE
->PLEASE DELETE USER OR OVERRIDE TO CONTINUE UPDATE
+>PLEASE DELETE USER OR <span id="overrideBtn" style="cursor:pointer; text-decoration:underline;">OVERRIDE</span> TO CONTINUE UPDATE
+
+<pre id="typedText" style="display:none;">
 >PLEASE TYPE IN USERNAME: THEOTHER
 >PLEASE TYPE IN PASSWORD: ***********
 >PLEASE TYPE IN COMMAND: OVERRIDE USER ERROR
 >PLEASE TYPE IN USER ID: 9.14.6.9.14.9.20.25.4.9.3.5
->PLEASE TYPE IN REASON: She belongs. 
+>PLEASE TYPE IN REASON: She belongs.
 >>>
 >>>
 >>>
->>>OVERRIDE ACCEPTED. 
+>>>OVERRIDE ACCEPTED.
+</pre>
+</div>
+
+<script>
+const button = document.getElementById("overrideBtn");
+const textBlock = document.getElementById("typedText");
+
+const fullText = textBlock.textContent;
+textBlock.textContent = "";
+
+button.addEventListener("click", () => {
+    button.style.pointerEvents = "none"; // prevent multiple clicks
+    textBlock.style.display = "block";
+
+    let i = 0;
+
+    function typeWriter() {
+        if (i < fullText.length) {
+            textBlock.textContent += fullText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 40); // typing speed
+        }
+    }
+
+    typeWriter();
+});
+</script>
 </body>
