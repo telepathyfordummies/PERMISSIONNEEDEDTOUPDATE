@@ -94,6 +94,14 @@
     text-transform: uppercase;   /* system-alert style */
     padding: 0 2px;              /* optional highlight padding */
 }
+
+    .cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
     
 </style>
 </head>
@@ -102,8 +110,13 @@
 <div class="log-box">
 >ERROR FOUND IN USER ███████████ DURING UPDATE
 >PLEASE DELETE USER OR <span id="overrideBtn" style="cursor:pointer; text-decoration:underline;">OVERRIDE</span> TO CONTINUE UPDATE
+<div id="typedText"></div><span id="cursor" class="cursor">█</span>
 
-<pre id="typedText" style="display:none;">
+<script>
+const button = document.getElementById("overrideBtn");
+const textBlock = document.getElementById("typedText");
+
+const fullText = `
 >PLEASE TYPE IN USERNAME: THEOTHER
 >PLEASE TYPE IN PASSWORD: ***********
 >PLEASE TYPE IN COMMAND: OVERRIDE USER ERROR
@@ -113,19 +126,10 @@
 >>>
 >>>
 >>>OVERRIDE ACCEPTED.
-</pre>
-</div>
-
-<script>
-const button = document.getElementById("overrideBtn");
-const textBlock = document.getElementById("typedText");
-
-const fullText = textBlock.textContent;
-textBlock.textContent = "";
+`;
 
 button.addEventListener("click", () => {
-    button.style.pointerEvents = "none"; // prevent multiple clicks
-    textBlock.style.display = "block";
+    button.style.pointerEvents = "none";
 
     let i = 0;
 
@@ -133,7 +137,7 @@ button.addEventListener("click", () => {
         if (i < fullText.length) {
             textBlock.textContent += fullText.charAt(i);
             i++;
-            setTimeout(typeWriter, 40); // typing speed. fiddle with this :3 
+            setTimeout(typeWriter, 40); /*typing speed. tinker with this :3*/
         }
     }
 
