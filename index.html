@@ -30,7 +30,7 @@
 .next-arrow {
     position: absolute;
     top: 5px;    /* adjust as you like */
-    right: 15px; /* adjust as you like */
+    right: 15px; /* again, adjust */
     width: 40px;
     height: auto;
     cursor: pointer;
@@ -82,7 +82,7 @@
         font-weight: bold;
     }
 
-    /* Optional: make quotes / italics glow slightly for effect */
+    /* make quotes / italics glow slightly for effect. keeping this but I actually dont think i even ever used this?? */
     .highlight {
         color: #ff99ff;
     }
@@ -133,7 +133,7 @@ button.addEventListener("click", () => {
         if (i < fullText.length) {
             textBlock.textContent += fullText.charAt(i);
             i++;
-            setTimeout(typeWriter, 40); // typing speed
+            setTimeout(typeWriter, 40); // typing speed. fiddle with this :3 
         }
     }
 
