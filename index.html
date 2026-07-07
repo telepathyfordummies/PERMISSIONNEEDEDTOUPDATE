@@ -110,6 +110,17 @@ a:active {
     color: #4a90e2;
     text-decoration: none; /* ok i think this part is right spin back */
 }
+
+#typedText.typing::after {
+    content: "█";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
     
 </style>
 </head>
@@ -118,7 +129,7 @@ a:active {
 <div class="log-box">
 >ERROR FOUND IN USER ███████████ DURING UPDATE
 >PLEASE <a href="wrongchoice.html">DELETE USER</a> OR <span id="overrideBtn" style="cursor:pointer; text-decoration:underline;">OVERRIDE</span> TO CONTINUE UPDATE 
-<div id="typedText"></div><span id="cursor" class="cursor">█</span>
+<div id="typedText"></div>
 
 <script>
 const button = document.getElementById("overrideBtn");
@@ -138,6 +149,7 @@ const fullText = `
 
 button.addEventListener("click", () => {
     button.style.pointerEvents = "none";
+    textBlock.classList.add("typing");
 
     let i = 0;
 
